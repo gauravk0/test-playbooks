@@ -1,5 +1,5 @@
  - name: Example 1 for looping
-   hosts: local
+   hosts: app
    gather_facts: false
    tasks:
     - name: To print 
