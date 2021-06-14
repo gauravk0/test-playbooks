@@ -1,0 +1,10 @@
+---
+ - name: To print a mesg
+   hosts: local
+   tasks:
+   - name: Print test msg
+     debug:
+      msg:
+       - "Welcome"
+       - "To the"
+       - "Ansible" 

@@ -1,0 +1,21 @@
+---
+ - name: Example 1 for looping
+   hosts: local
+   gather_facts: false
+   vars:
+    packages: 
+     - name: git 
+       need: true
+     - name: vim 
+       need: true
+     - name: nginx 
+       need: false
+   tasks:
+    - name: Install "{{item.name}}" packages
+      yum: 
+       name: "{{item.name}}"
+       state: present
+      when:
+      - item.need == true
+
+      loop: "{{packages}}"     

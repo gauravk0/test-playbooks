@@ -1,0 +1,15 @@
+---
+ - name: Example 1 for looping 
+   hosts: local 
+   gather_facts: false
+   tasks: 
+    - name: To display names
+      debug: 
+       msg: "{{item}}"
+#      with_items:
+#       - car
+#       - watch
+
+      loop: 
+       - car 
+       - watch

@@ -1,0 +1,6 @@
+---
+ - name: To print
+   hosts: local
+   gather_facts: false
+   tasks:
+   - debug: var=x

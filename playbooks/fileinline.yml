@@ -1,0 +1,12 @@
+---
+ - name: Line change ex.1 
+   hosts: local
+   become: true
+   tasks:
+    - name: Change
+      lineinfile: 
+       destfile: /root/files/sshd_config
+       regexp: '^PasswordAuthentication'
+       line: "PasswordAuthentication no"
+       state: present
+       backup: yes 

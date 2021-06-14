@@ -1,0 +1,12 @@
+---
+ - name: To check disk size 
+   hosts: local
+   tasks: 
+    - name: To extract 
+      shell : df -h /tmp|grep -v Filesystem|awk '{print $4}'|cut -d G -f1
+      register: myvalue
+      
+    - name: To display
+      debug: var=myvalue.stdout
+      
+      failed_when: "myvalue.stdout|int < 17"

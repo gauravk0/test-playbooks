@@ -1,0 +1,7 @@
+---
+ - hosts: local
+   gather_facts: true
+   tasks:
+     - include_vars: get_var_from_{{ansible_os_family}}.yml
+     - debug:
+        msg: "The var is {{pkg}}"

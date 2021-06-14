@@ -1,0 +1,11 @@
+ - name: Example 1 for changed one
+   hosts: local
+   gather_facts: false
+   tasks:
+    - name: To check nginx service
+      become: yes
+      shell: "systemctl status nginx"
+      register: output
+    - name: print
+      debug: 
+       var: output.stdout

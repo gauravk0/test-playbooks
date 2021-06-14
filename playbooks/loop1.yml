@@ -1,0 +1,10 @@
+ - name: Example 1 for looping
+   hosts: local
+   gather_facts: false
+   tasks:
+    - name: To print 
+      debug:
+       msg: The detail {{item.name}} and {{item.roll}} 
+
+      loop:
+       - { name: Gaurav , roll: 47 } 

@@ -1,0 +1,9 @@
+---
+ - hosts: local
+   gather_facts: true
+   tasks:
+    - block: 
+       - command: "ls /root/playbook/"
+         register: out_1
+         ignore_case: true 
+    - debug: var=out_1

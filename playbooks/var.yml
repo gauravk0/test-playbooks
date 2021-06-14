@@ -1,0 +1,8 @@
+---
+ - name: To print
+   hosts: app
+   tasks:
+   - name: Task1
+     debug: 
+      msg: "THe name is {{inventory_hostname}}"
+      #var: inventory_hostname

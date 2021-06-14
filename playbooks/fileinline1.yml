@@ -1,0 +1,12 @@
+---
+ - name: Line change ex.2
+   hosts: local
+   become: true
+   tasks:
+    - name: To insert a line before
+      lineinfile:
+       dest: /root/files/file1.txt
+       line: '8.9.8.9'
+       insertafter: '4.4.4.4'
+       backup: yes
+

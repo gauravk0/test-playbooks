@@ -1,0 +1,20 @@
+---
+ - name: To print input var
+   hosts: local
+   vars:
+    x: 56
+   vars_prompt:
+    - name: Name
+      prompt: Enter the name
+      
+    - name: Pass
+      prompt: Enter the pass
+      private: false
+   gather_facts: false   
+   tasks: 
+   - name: To display
+     debug: 
+      msg:
+       - "value is {{x}}"
+       - "Entered name is : {{Name}}"
+       - "Entered pass is : {{Pass}}"

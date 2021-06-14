@@ -1,0 +1,15 @@
+---
+- name: Check disk space usage
+  hosts: local
+
+  tasks:
+    
+     - name: Check disk space usage on servers
+       shell: df -Th
+       register: result
+       until: result.rc == 0
+       retries: 2
+       delay: 1
+     - name: Print
+       debug:
+          var: result.rc

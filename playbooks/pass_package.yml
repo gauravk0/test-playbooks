@@ -1,0 +1,9 @@
+---
+ - name: Command line arg example
+   hosts: local
+   gather_facts: false     
+   tasks:
+   - name: Install/Uninstall {{pkg}} with argument passing
+     yum: 
+      name: "{{pkg}}"
+      state: "{{req_state}}"

@@ -1,0 +1,16 @@
+---
+ - hosts: local
+   gather_facts: false
+   tasks:
+    - block: 
+       - name: To get files of directory
+         command: "ls /root/playbook/"
+         register: out_1
+       - debug: var=out_1
+      rescue:
+       - debug:
+          msg: The given path is wrong path
+      always:
+       - debug:
+          msg: This will execute always! 
+         
