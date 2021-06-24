@@ -1,0 +1,33 @@
+---
+
+- hosts: localhost
+  connection: local
+  gather_facts: False
+
+  vars:
+    region: us-east-2
+    id: "web-app"
+    sec_group: "ansible-web-app-sec"
+
+  tasks:
+
+   - name: Update security group
+     ec2_group:
+      name: "{{ sec_group }}"
+      description: "Sec group for app {{ id }}"
+      vpc_id: vpc-98d349f3
+      region: "{{ region }}"
+      aws_access_key: "{{ec2_access_key}}"
+      aws_secret_key: "{{ec2_secret_key}}"
+      rules:
+       - proto: tcp
+         ports:
+          - 80
+         cidr_ip: 0.0.0.0/0
+         rule_desc: allow all on http port
+     register: result_sec_group
+
+   - name: To print Security group
+     debug: 
+      var: result_sec_group
+   
